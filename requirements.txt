@@ -1,0 +1,28 @@
+# Core dependencies
+opencv-python>=4.8.0
+numpy>=1.21.0,<2.0.0
+scipy>=1.9.0
+matplotlib>=3.5.0
+Pillow>=9.0.0
+
+# 3D processing and reconstruction (required)
+trimesh>=3.20.0
+
+# Image processing and analysis
+imageio>=2.25.0
+scikit-image>=0.19.0
+
+# Plan parsing (for architectural drawings)
+PyMuPDF>=1.20.0
+
+# Utilities
+tqdm>=4.60.0
+click>=8.0.0
+pyyaml>=6.0.0
+
+# Optional dependencies (for enhanced features)
+# mediapipe>=0.10.0  # For pose detection and scale estimation
+# pdf2image>=1.16.0  # For PDF conversion alternative
+# imageio-ffmpeg>=0.4.8  # For video format support
+# open3d>=0.16.0  # For advanced 3D processing
+# pyvista>=0.40.0  # For visualization

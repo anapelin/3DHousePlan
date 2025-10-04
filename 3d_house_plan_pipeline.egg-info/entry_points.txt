@@ -1,0 +1,2 @@
+[console_scripts]
+3d-house-plan = main:main

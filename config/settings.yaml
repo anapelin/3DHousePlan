@@ -1,0 +1,81 @@
+# 3D House Plan Pipeline Configuration
+
+# Video Processing Settings
+video:
+  frame_skip: 10                    # Process every Nth frame to reduce computation
+  quality_threshold: 0.5            # Minimum quality threshold for frame processing
+  max_frames: 1000                  # Maximum number of frames to process
+  depth_estimation:
+    method: "edge_based"            # Method for depth estimation
+    smoothing: true                 # Apply smoothing to depth maps
+
+# Plan Parsing Settings
+plan:
+  scale_factor: 100.0               # Pixels per meter (estimated)
+  min_room_area: 5.0                # Minimum room area in square meters
+  wall_thickness: 0.2               # Standard wall thickness in meters
+  door_width: 0.9                   # Standard door width in meters
+  window_width: 1.2                 # Standard window width in meters
+  preprocessing:
+    blur_kernel_size: 3             # Gaussian blur kernel size
+    threshold_method: "adaptive"    # Thresholding method
+    morphological_ops: true         # Apply morphological operations
+
+# 3D Reconstruction Settings
+reconstruction:
+  mesh_optimization: true           # Optimize mesh by removing duplicates
+  combine_components: true          # Combine all room components into single mesh
+  room_height: 2.5                  # Default ceiling height in meters
+  materials:
+    wall:
+      color: [0.8, 0.8, 0.8]       # RGB color for walls
+      roughness: 0.7                # Material roughness
+    floor:
+      color: [0.6, 0.4, 0.2]       # RGB color for floor
+      roughness: 0.3
+    ceiling:
+      color: [0.9, 0.9, 0.9]       # RGB color for ceiling
+      roughness: 0.8
+    window:
+      color: [0.7, 0.8, 1.0]       # RGB color for windows
+      roughness: 0.1
+    door:
+      color: [0.4, 0.2, 0.1]       # RGB color for doors
+      roughness: 0.5
+
+# Export Settings
+export:
+  default_format: "obj"             # Default export format
+  formats:
+    obj:
+      include_materials: true       # Include material information
+      include_normals: true         # Include vertex normals
+      include_textures: false       # Include texture coordinates
+    fbx:
+      include_materials: true       # Include material information
+      include_animations: false     # Include animation data
+      scale_factor: 1.0             # Scale factor for export
+    ply:
+      include_colors: true          # Include vertex colors
+      include_normals: true         # Include vertex normals
+    stl:
+      ascii: false                  # Use binary STL format
+      include_normals: true         # Include face normals
+    blend:
+      create_script: true           # Create Blender import script
+      include_lighting: true        # Include basic lighting setup
+      include_camera: true          # Include camera setup
+
+# Logging Settings
+logging:
+  level: "INFO"                     # Logging level (DEBUG, INFO, WARNING, ERROR)
+  file: "pipeline.log"              # Log file path
+  console: true                     # Enable console logging
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Performance Settings
+performance:
+  max_memory_usage: "2GB"           # Maximum memory usage
+  parallel_processing: false        # Enable parallel processing
+  gpu_acceleration: false           # Enable GPU acceleration (if available)
+  cache_intermediate_results: true  # Cache intermediate processing results
