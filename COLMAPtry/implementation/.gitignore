@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Pipeline outputs
+outputs/
+output/
+*.db
+*.bin
+*.log
+
+# Temporary files
+temp_frames/
+*.ply
+*.obj
+*.mtl
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sample data (large files)
+sample_data/*.mp4
+sample_data/*.mov
+sample_data/*.avi
+sample_data/images/*
+!sample_data/images/.gitkeep
+

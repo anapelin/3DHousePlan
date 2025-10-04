@@ -1,0 +1,4 @@
+"""
+Tests for COLMAP pipeline
+"""
+
