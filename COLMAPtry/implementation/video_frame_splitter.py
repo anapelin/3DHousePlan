@@ -354,13 +354,13 @@ if __name__ == "__main__":
         print("  python video_frame_splitter.py video.mp4 output_frames/")
         print("  python video_frame_splitter.py video.mp4 output_frames/ 50")
         print("\nDefault output directory: ./frames/")
-        print("Default FPS: 50")
+        print("Default FPS: ")
         sys.exit(0)
     
     # Parse arguments
     video_file = sys.argv[1]
     output_folder = sys.argv[2] if len(sys.argv) > 2 else "frames"
-    target_fps = int(sys.argv[3]) if len(sys.argv) > 3 else 50
+    target_fps = int(sys.argv[3]) if len(sys.argv) > 3 else 16
     
     try:
         # Get video info

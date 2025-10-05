@@ -1,0 +1,69 @@
+# PCto3D Pipeline Configuration
+
+# Input/Output Settings
+input:
+  ply_folder: "input"  # Folder containing input PLY files
+  ply_file: "pointcloud.ply"  # Default PLY file name
+
+output:
+  folder: "output"  # Output folder for processed files
+  obj_name: "segmented_model.obj"  # Output OBJ file name
+  save_intermediate: true  # Save intermediate results
+  
+# Mesh Refinement Settings
+refinement:
+  # Outlier removal parameters
+  outlier_removal:
+    method: "statistical"  # Options: "statistical", "radius"
+    nb_neighbors: 20  # Number of neighbors to analyze
+    std_ratio: 2.0  # Standard deviation ratio threshold
+    radius: 0.05  # Radius for radius outlier removal
+    min_nb_points: 5  # Minimum number of points in radius
+  
+  # Noise filtering
+  noise_filtering:
+    enable: true
+    voxel_size: 0.02  # Voxel size for downsampling
+    
+  # Mesh smoothing
+  smoothing:
+    enable: true
+    method: "laplacian"  # Options: "laplacian", "taubin"
+    iterations: 5
+    lambda_filter: 0.5
+    
+# Surface Segmentation Settings
+segmentation:
+  method: "region_growing"  # Options: "region_growing", "clustering", "ransac"
+  
+  # Region growing parameters
+  region_growing:
+    normal_variance_threshold: 0.1
+    curvature_threshold: 1.0
+    min_cluster_size: 100
+    
+  # Clustering parameters
+  clustering:
+    method: "dbscan"  # Options: "dbscan", "kmeans"
+    eps: 0.05  # DBSCAN epsilon
+    min_samples: 10  # DBSCAN minimum samples
+    n_clusters: 10  # K-means number of clusters
+    
+  # RANSAC plane segmentation
+  ransac:
+    distance_threshold: 0.01
+    ransac_n: 3
+    num_iterations: 1000
+    max_planes: 10  # Maximum number of planes to extract
+    
+  # Post-processing
+  min_segment_size: 50  # Minimum points in a valid segment
+  merge_similar_segments: true
+  merge_threshold: 0.05  # Threshold for merging similar segments
+
+# Visualization Settings
+visualization:
+  enable: false  # Show visualization during processing
+  save_preview: true  # Save preview images
+  colorize_segments: true  # Apply colors to different segments
+
